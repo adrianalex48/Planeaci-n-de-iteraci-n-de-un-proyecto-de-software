@@ -43,3 +43,35 @@ class ConjuntoDatosTest {
         assertEquals(0, datos.getValores().size());
     }
 }
+
+//AGREGAR PRUEBAS
+@Test
+void esNumeroValido_conNumeroEntero_devuelveTrue() {
+    assertTrue(ConjuntoDatos.esNumeroValido("42"));
+}
+
+@Test
+void esNumeroValido_conDecimal_devuelveTrue() {
+    assertTrue(ConjuntoDatos.esNumeroValido("3.14"));
+}
+
+@Test
+void esNumeroValido_conNegativo_devuelveTrue() {
+    assertTrue(ConjuntoDatos.esNumeroValido("-7.5"));
+}
+
+@Test
+void esNumeroValido_conTextoNoNumerico_devuelveFalse() {
+    assertFalse(ConjuntoDatos.esNumeroValido("abc"));
+}
+
+@Test
+void esNumeroValido_conCadenaVacia_devuelveFalse() {
+    assertFalse(ConjuntoDatos.esNumeroValido(""));
+}
+
+@Test
+void agregarValorInvalido_lanzaExcepcion() {
+    ConjuntoDatos datos = new ConjuntoDatos();
+    assertThrows(IllegalArgumentException.class, () -> datos.agregarValor(Double.NaN));
+}
