@@ -1,11 +1,8 @@
 package com.iteracion;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ConjuntoDatosTest {
 
@@ -42,36 +39,37 @@ class ConjuntoDatosTest {
         assertTrue(datos.estaVacio());
         assertEquals(0, datos.getValores().size());
     }
-}
 
-//AGREGAR PRUEBAS
-@Test
-void esNumeroValido_conNumeroEntero_devuelveTrue() {
-    assertTrue(ConjuntoDatos.esNumeroValido("42"));
-}
+    // Validación de entradas (HU-04)
 
-@Test
-void esNumeroValido_conDecimal_devuelveTrue() {
-    assertTrue(ConjuntoDatos.esNumeroValido("3.14"));
-}
+    @Test
+    void esNumeroValido_conNumeroEntero_devuelveTrue() {
+        assertTrue(ConjuntoDatos.esNumeroValido("42"));
+    }
 
-@Test
-void esNumeroValido_conNegativo_devuelveTrue() {
-    assertTrue(ConjuntoDatos.esNumeroValido("-7.5"));
-}
+    @Test
+    void esNumeroValido_conDecimal_devuelveTrue() {
+        assertTrue(ConjuntoDatos.esNumeroValido("3.14"));
+    }
 
-@Test
-void esNumeroValido_conTextoNoNumerico_devuelveFalse() {
-    assertFalse(ConjuntoDatos.esNumeroValido("abc"));
-}
+    @Test
+    void esNumeroValido_conNegativo_devuelveTrue() {
+        assertTrue(ConjuntoDatos.esNumeroValido("-7.5"));
+    }
 
-@Test
-void esNumeroValido_conCadenaVacia_devuelveFalse() {
-    assertFalse(ConjuntoDatos.esNumeroValido(""));
-}
+    @Test
+    void esNumeroValido_conTextoNoNumerico_devuelveFalse() {
+        assertFalse(ConjuntoDatos.esNumeroValido("abc"));
+    }
 
-@Test
-void agregarValorInvalido_lanzaExcepcion() {
-    ConjuntoDatos datos = new ConjuntoDatos();
-    assertThrows(IllegalArgumentException.class, () -> datos.agregarValor(Double.NaN));
+    @Test
+    void esNumeroValido_conCadenaVacia_devuelveFalse() {
+        assertFalse(ConjuntoDatos.esNumeroValido(""));
+    }
+
+    @Test
+    void agregarValorInvalido_lanzaExcepcion() {
+        ConjuntoDatos datos = new ConjuntoDatos();
+        assertThrows(IllegalArgumentException.class, () -> datos.agregarValor(Double.NaN));
+    }
 }
