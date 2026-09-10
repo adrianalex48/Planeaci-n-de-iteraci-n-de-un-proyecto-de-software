@@ -43,3 +43,14 @@ public class ConjuntoDatos {
     }
 
     public List<Double> getValores() {
+        return List.copyOf(valores);
+    }
+
+    public boolean estaVacio() {
+        return valores.isEmpty();
+    }
+
+    public int tamanio() {
+        return valores.size();
+    }
+}
